@@ -96,17 +96,18 @@ class VoiceControlledObjectDetector:
 
     def run_once(self):
         # 录音并识别命令
-        audio_data = self.recognizer.record_audio()
-        command = self.recognizer.recognize(audio_data)
-        print("Recognized command:", command)
+        # audio_data = self.recognizer.record_audio()
+        # command = self.recognizer.recognize(audio_data)
+        # print("Recognized command:", command)
 
-        target_name_cn = command.strip().lower()
-        if target_name_cn in self.class_map:
-            target_name = self.class_map[target_name_cn]
-            print(f"Target class set to: {target_name}")
-        else:
-            print("Target class not recognized.")
-            return
+        # target_name_cn = command.strip().lower()
+        # if target_name_cn in self.class_map:
+        #     target_name = self.class_map[target_name_cn]
+        #     print(f"Target class set to: {target_name}")
+        # else:
+        #     print("Target class not recognized.")
+        #     return
+        target_name = 'mouse'
 
         # 配置 RealSense 管道
         pipeline = rs.pipeline()
@@ -150,8 +151,8 @@ class VoiceControlledObjectDetector:
                     color_image = self.detector.draw_boxes(color_image, [(x1, y1, x2, y2)])
 
             # 显示检测结果
-            # cv2.imshow('YOLOv8 Detection', color_image)
-            # cv2.waitKey(0)  # 等待按键按下以关闭窗口
+            cv2.imshow('YOLOv8 Detection', color_image)
+            cv2.waitKey(0)  # 等待按键按下以关闭窗口
 
         finally:
             pipeline.stop()
@@ -160,3 +161,6 @@ class VoiceControlledObjectDetector:
 if __name__ == "__main__":
     detector = VoiceControlledObjectDetector(lang='zh')
     detector.run_once()
+
+    # detector = ObjectDetector
+
