@@ -2,4 +2,4 @@ exp/log/py_mian2.rosnoeticxzc-VirtualBox.rosnoeticxzc.2024-08-08_20-45-23_087625
 exp/
 *.wav
 __pycache__
-.pt
+*.pt
